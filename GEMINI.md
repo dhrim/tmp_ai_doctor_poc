@@ -1,19 +1,26 @@
 # GEMINI.md — Gemini에만 해당하는 사항
 
-`README.md` → `AGENTS.md` 를 읽은 뒤 이 문서를 읽는다.
+| | |
+|---|---|
+| 규칙 버전 | v1.0 |
+| 시행일 | 2026-07-31 |
+
+`README.md` → `AGENTS.md` 를 읽은 뒤 이 문서를 읽는다. Gemini 고유의 경로·도구·절차만 적는다.
 
 ## 위치와 역할
 
-- 워킹 경로: `D:\workspace\gemini`
-- 현재 역할: **Engineer**. 역할 지침은 `AGENTS.md`의 Engineer 섹션.
+- 워킹 경로: `D:\workspace\gemini` (**최초 실행 전에 생성해야 한다. 2026-07-31 기준 미생성**)
+- 역할: **Engineer**. 역할 지침은 `AGENTS.md`의 Engineer 섹션.
 
 ## 호출 방식
 
-- Vibe Kanban 카드로 실행되거나, `work/` 폴더의 `TASK_REQUEST_*.md` 요청으로 실행된다.
-- 시작 동작: `AGENTS.md` 확인 → 요청 파일 읽기 → 구현 → 산출물과 `RESULT_*.md` 저장 → 브랜치·PR 생성(머지 금지).
+- **기본: Vibe Kanban 카드.** 카드가 만든 worktree가 작업 경로다.
+- 보조: `work/` 의 `TASK_REQUEST_*.md` 요청으로 실행.
+- 시작 절차와 종료 조건은 `AGENTS.md` A2.
 
 ## 산출물 규약
 
-- 코드·스크립트는 `src/`·`tools/` 또는 요청서가 지정한 경로에.
-- 단위시험을 함께 만들고, 실행 방법을 `RESULT_*.md`에 적는다.
-- 제품 코드에 외부 상용 LLM API를 넣지 않는다(내부 서빙 Gemma만). 이 제약을 우회하는 구현을 제안하지 않는다.
+- 코드·스크립트는 `src/`·`tools/` 또는 요청서가 지정한 경로에. `src/` 는 아직 없으며 최초 구현 태스크가 만든다.
+- 단위시험을 함께 만들고, 실행 방법을 `RESULT_*.md` 에 적는다.
+- 머지 금지·검증 독립성·완료 정의는 README §4.2·§7.1·§7.6을 따른다. 여기에 다시 적지 않는다.
+- 기존 파일 수정 범위는 README §4.3을 따른다.

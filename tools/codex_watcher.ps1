@@ -1,3 +1,7 @@
+﻿# DEPRECATED 2026-07-31. Do not use. Replaced by Vibe Kanban cards (README section 8).
+Write-Host 'DEPRECATED: codex_watcher.ps1 was retired on 2026-07-31. Use Vibe Kanban cards instead. See README section 8.' -ForegroundColor Red
+exit 1
+
 # codex_watcher.ps1 — Codex(Verifier) 자동 실행 브리지
 #
 # 동작: 이 레포의 work\ 폴더 아래 요청 파일(VERIFY_REQUEST_*.md / TASK_REQUEST_*.md)을 감시.
