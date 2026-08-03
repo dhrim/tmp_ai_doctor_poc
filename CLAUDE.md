@@ -47,5 +47,11 @@
 - Claude의 bash는 **리눅스 샌드박스**다. Windows 명령이 아니며, 호스트와 경로가 다르다.
 - 공용 드라이브(W:)는 샌드박스에 마운트되지 않는다. 필요한 파일은 브라우저로 내려받아 개인 워킹 경로에서 처리한다.
 - PDF 텍스트 추출은 샌드박스의 `pdftotext -layout` 을 쓴다(호스트 Windows에는 없다).
-- 샌드박스에는 파일 삭제 권한이 없다. 샌드박스에서 git 쓰기 작업을 하면 `.git` 에 락 파일이 남아 이후 git 작업을 막는다. **git 쓰기는 사람이 호스트에서 실행하도록 명령을 전달한다.**
+- **커밋은 Claude가 직접 한다** (README §4.2). push와 머지는 사람이 한다 — 샌드박스에 GitHub 자격증명이 없다.
+- 커밋 작성자는 항상 `임도형 (Planner/Claude)` 로 지정한다. 전역 git 설정을 바꾸지 않고 `git -c user.name=...` 로 그 커밋에만 적용한다.
+- **커밋 후에는 반드시 락 파일이 남는다.** 샌드박스에 삭제 권한이 없어 git이 `.git\index.lock`·`HEAD.lock` 을 못 지운다. 방치하면 이후 git 작업이 전부 막힌다. 커밋할 때마다 사람에게 아래 한 줄을 함께 전달한다.
+
+```
+cd /d D:\workspace\github\ai-doctor && del /f /q .git\index.lock .git\HEAD.lock 2>nul & for /r .git\objects %f in (tmp_obj_*) do @del /f /q "%f" & git status && git push
+```
 - 사람에게 실행을 요청해야 하는 명령은 **한 줄로** 정리해 전달한다.
